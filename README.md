@@ -2,21 +2,22 @@
 
 ## Estrutura
 
-- `scripts/build_menu.js`: leitura da planilha e geração do HTML.
-- `assets/css/tokens.css`: variáveis globais do design system.
-- `assets/css/layout.css`: estrutura geral da página.
-- `assets/css/components.css`: componentes reutilizáveis.
-- `assets/js/portal.js`: filtros, busca e interação da sidebar.
-- `data/`: fontes de dados usadas pelo gerador.
-- `portal.html`: arquivo gerado. Não editar diretamente.
+- `web/`: página gerada e código do front-end.
+- `api/`: gerador do portal e planilha de origem em `api/data/`.
+- `assets/`: estilos e logo compartilhados pela aplicação.
+- `package.json`: comandos do monorepo.
+- `web/package.json`: dependências e ferramentas do front-end.
 
 ## Uso
 
 ```powershell
-npm install
+npm --prefix web install
 npm run build
 npm run serve
 ```
+
+O build gera `web/index.html`. Com o servidor iniciado na raiz do projeto, acesse
+`http://localhost:3000/web/`.
 
 ## Formatação
 
@@ -25,4 +26,4 @@ npm run format
 npm run format:check
 ```
 
-O arquivo `.prettierrc.json` define a configuração do projeto. O VS Code está configurado para formatar arquivos suportados automaticamente ao salvar.
+A configuração do Prettier fica em `web/.prettierrc.json`. O VS Code está configurado para formatar arquivos suportados automaticamente ao salvar.

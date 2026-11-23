@@ -1,11 +1,15 @@
-const XLSX = require('xlsx');
+const { createRequire } = require('module');
 const fs = require('fs');
 const path = require('path');
 
 const projectRoot = path.resolve(__dirname, '..');
-const basePath = process.env.BASE || path.join(projectRoot, 'data', 'Portal_BI_Estrutura.xlsx');
-const logoPath = path.join(projectRoot, 'logo.txt');
-const outputPath = path.join(projectRoot, 'portal.html');
+const requireWeb = createRequire(path.join(projectRoot, 'web', 'package.json'));
+const XLSX = requireWeb('xlsx');
+const basePath = process.env.BASE
+  ? path.resolve(projectRoot, process.env.BASE)
+  : path.join(projectRoot, 'api', 'data', 'Portal_BI_Estrutura.xlsx');
+const logoPath = path.join(projectRoot, 'assets', 'logo.txt');
+const outputPath = path.join(projectRoot, 'web', 'index.html');
 
 const workbook = XLSX.readFile(basePath);
 const readSheet = (name) => workbook.Sheets[name]
@@ -118,9 +122,9 @@ const html = `<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap">
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
 </head>
 <body>
   <header class="portal-header">
@@ -163,10 +167,10 @@ const html = `<!doctype html>
     </main>
   </div>
 
-  <script src="assets/js/portal.js"></script>
+  <script src="portal.js"></script>
 </body>
 </html>`;
 
 fs.writeFileSync(outputPath, html);
-console.log(`portal.html gerado em ${outputPath}`);
+console.log(`web/index.html gerado em ${outputPath}`);
 console.log(`Setores: ${areas.length} | Sub-áreas: ${subareas.length} | Indicadores: ${indicators.length}`);

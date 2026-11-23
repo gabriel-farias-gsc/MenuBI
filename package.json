@@ -2,15 +2,9 @@
   "name": "portal-bi-logistica",
   "private": true,
   "scripts": {
-    "build": "node scripts/build_menu.js",
+    "build": "npm --prefix web run build",
     "serve": "npx serve .",
-    "format": "prettier --write \"**/*.{js,css,json,html,md}\"",
-    "format:check": "prettier --check \"**/*.{js,css,json,html,md}\""
-  },
-  "dependencies": {
-    "xlsx": "^0.18.5"
-  },
-  "devDependencies": {
-    "prettier": "^3.6.2"
+    "format": "npm --prefix web run format",
+    "format:check": "npm --prefix web run format:check"
   }
 }
