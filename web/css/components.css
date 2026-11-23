@@ -237,7 +237,7 @@
 }
 
 .report-section__title::after {
-  content: "";
+  content: ""; 
   flex: 1;
   height: var(--border-width-default);
   background: var(--color-divider);
