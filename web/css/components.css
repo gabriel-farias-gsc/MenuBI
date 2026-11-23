@@ -240,7 +240,7 @@
   content: "";
   flex: 1;
   height: var(--border-width-default);
-  background: var(--color-divider);
+  background: var(--color-border-default);
 }
 
 .report-grid {
@@ -293,7 +293,7 @@
 
 .report-card__meta strong {
   color: var(--color-text-primary);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
 }
 
 .report-card__footer {
