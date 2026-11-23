@@ -1,29 +1,25 @@
 # Portal BI Logística
 
-## Estrutura
+Portal web para visualização e acompanhamento de indicadores logísticos da operação. Será possível encontrar categorizados os BI's de diversas áreas, sendo controlados e monitorado por acessos para cada usuário. 
 
-- `web/`: página gerada e código do front-end.
-- `api/`: gerador do portal e planilha de origem em `api/data/`.
-- `assets/`: estilos e logo compartilhados pela aplicação.
-- `package.json`: comandos do monorepo.
-- `web/package.json`: dependências e ferramentas do front-end.
+## Objetivo
 
-## Uso
+Centralizar informações e indicadores logísticos em uma única interface, facilitando a análise operacional e o acompanhamento de métricas da área. Integrando Inteligência artificial para uma facilidade de busca de dados e direcionamento para os BI's correspondentes ao assunto perguntado pelo usuário.
 
-```powershell
-npm --prefix web install
-npm run build
-npm run serve
-```
+## Arquitetura do Projeto
 
-O build gera `web/index.html`. Com o servidor iniciado na raiz do projeto, acesse
-`http://localhost:3000/web/`.
+O repositório é um mono-repo organizado em três partes principais:
 
-## Formatação
+### web/
+Contém a aplicação front-end e os arquivos gerados para publicação do portal.
 
-```powershell
-npm run format
-npm run format:check
-```
+### api/
+Responsável pelo processamento dos dados e geração dos artefatos consumidos pela interface.
 
-A configuração do Prettier fica em `web/.prettierrc.json`. O VS Code está configurado para formatar arquivos suportados automaticamente ao salvar.
+### assets/
+Arquivos compartilhados pela aplicação, como estilos visuais, imagens e logotipos.
+
+## Fluxo básico de Funcionamento no repositório
+
+1. Os dados são disponibilizados pelo banco de dados e consumidos em `api/`.
+2. O front-end em `web/` apresenta os indicadores ao usuário.
