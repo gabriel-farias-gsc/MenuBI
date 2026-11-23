@@ -1,0 +1,84 @@
+:root {
+  /* Marcas */
+  --brand-farmas-navy: #1C2445;
+  --brand-farmas-red: #B82824;
+  --brand-farmas-blue: #008ECF;
+  --brand-farmas-blue-dark: #0078B7;
+  --brand-farmas-yellow: #F0F73C;
+  --brand-farmas-brown: #703622;
+  --brand-oncoprod-sand: #E5C89E;
+  --brand-oncoprod-caramel: #A68E6E;
+  --brand-oncoprod-petroleum: #355B73;
+  
+  /* Cores semânticas */
+  --color-brand-primary: var(--brand-farmas-navy);
+  --color-brand-accent: var(--brand-farmas-navy);
+  --color-brand-danger: var(--brand-farmas-red);
+  --color-text-primary: #151922;
+  --color-text-secondary: #B1B1B1;
+  --color-border-default: #ECECEC;
+  --color-divider: #B1B1B1;
+  --color-border-strong: #D9D9D9;
+  --color-background-page: #F7F8FA;
+  --color-background-card: #FFFFFF;
+  --color-background-subtle: #F5F5F5;
+
+  /* Status */
+  --status-positive-text: #5E9C76;
+  --status-positive-background: #E3F4E8;
+  --status-negative-text: #C8706B;
+  --status-negative-background: #FBE4E2;
+  --status-warning-text: #C49A3A;
+  --status-warning-background: #FDF3D8;
+  --status-neutral-text: #8C8C8C;
+  --status-neutral-background: #F2F2F2;
+  --status-info-text: #5C93BF;
+  --status-info-background: #E1EEF8;
+
+  /* Tipografia */
+  --font-family-brand: "Chivo", "Segoe UI", system-ui, sans-serif;
+  --font-size-page-title: 20px;
+  --font-size-section-title: 16px;
+  --font-size-card-title: 14px;
+  --font-size-body: 12px;
+  --font-size-caption: 12px;
+  --line-height-page-title: 28px;
+  --line-height-section-title: 24px;
+  --line-height-card-title: 20px;
+  --line-height-body: 16px;
+  --line-height-caption: 14px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+
+  /* Espaçamento */
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --page-margin: 24px;
+  --component-gap: 16px;
+
+  /* Bordas */
+  --radius-default: 8px;
+  --border-width-default: 1px;
+
+  /* Sombras */
+  --shadow-header: 0 6px 14px #E2E2E2;
+  --shadow-card-hover: 0 6px 14px rgba(28, 36, 69, 0.08);
+
+  /* Dimensões */
+  --header-height: 60px;
+  --header-margin-top: 12px;
+  --header-horizontal-margin: 12px;
+  --sidebar-width: 244px;
+  --logo-width: 160px;
+  --logo-height: 40px;
+  --search-width: 224px;
+  --drawer-width-collapsed: 64px;
+  --drawer-width-expanded: 244px;
+}

@@ -1,0 +1,150 @@
+/* Reset global do projeto */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-family-brand);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 30;
+  bottom: 0;
+  left: 21px;
+  right: 21px;
+  height: var(--border-width-default);
+  background: linear-gradient(90deg, var(--brand-farmas-navy) 0%, var(--brand-farmas-red) 100%);
+}
+
+button,
+input,
+textarea,
+select {
+  margin: 0;
+  font: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portal-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  flex: 0 0 var(--header-height);
+  height: var(--header-height);
+  margin: 0;
+  padding: 0 var(--space-lg);
+  background:linear-gradient(100deg,#0c2440 0%, #16395c 48%, #1e4a75 100%);
+  border: 0;
+  border-radius: 0;
+  box-shadow: var(--shadow-header);
+}
+
+.portal-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 0;
+  padding: 0;
+}
+
+.portal-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--drawer-width-expanded);
+  flex: 0 0 var(--drawer-width-expanded);
+  overflow: hidden;
+  background: var(--color-background-card);
+  border-top: 0;
+  border-right: var(--border-width-default) solid var(--color-border-default);
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+  transition: width 0.24s ease, flex-basis 0.24s ease;
+}
+
+.portal-sidebar--collapsed {
+  width: var(--drawer-width-collapsed);
+  flex-basis: var(--drawer-width-collapsed);
+}
+
+.sidebar-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  margin-top: -10px;
+  padding: var(--header-margin-top) 10px;
+}
+
+.portal-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--space-lg);
+}
+
+@media (max-width: 760px) {
+  body { overflow: auto; }
+  .portal-sidebar { display: none; }
+  .portal-body { padding: 0; }
+}
