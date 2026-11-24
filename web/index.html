@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal BI Logística</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <header class="portal-header">
+    <div class="header-title">
+      <span class="header-title__main">Portal BI Logística</span>
+      <span class="header-title__subtitle">Versão 3.0</span>
+    </div>
+    <label class="header-search" for="busca">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+      </svg>
+      <input id="busca" type="search" placeholder="Buscar relatório…" autocomplete="off">
+    </label>
+    <img class="header-logo" src="data:image/png;base64,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" alt="GrupoSC">
+  </header>
+
+  <div class="portal-body">
+    <aside class="portal-sidebar" aria-label="Navegação do portal">
+      <button class="drawer-toggle" type="button" aria-label="Recolher navegação" aria-expanded="true">
+        <span class="material-symbols-rounded" aria-hidden="true">menu_open</span>
+        <span class="drawer-toggle__label">Menu de navegação</span>
+      </button>
+      <div class="sidebar-scroll">
+        <div class="sidebar-label">Áreas</div>
+        <div class="sector" data-setor="Logística">
+    <span class="material-symbols-rounded sector__icon" aria-hidden="true">category</span>
+    <span class="sector__name">Logística</span>
+    <span class="sector__count">55</span>
+    <span class="material-symbols-rounded sector__arrow" aria-hidden="true">expand_more</span>
+  </div>
+  <div class="sub-wrap" data-setor="Logística">
+    <div class="sidebar-item sidebar-item--sub sector-todos sidebar-item--active" data-setor="Logística">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">grid_view</span>
+      <span class="sidebar-item__name">Todos os indicadores</span>
+      <span class="sidebar-item__count">55</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Abastecimento">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Abastecimento</span>
+      <span class="sidebar-item__count">9</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Balanceamento">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Balanceamento</span>
+      <span class="sidebar-item__count">4</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="CEQ">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">CEQ</span>
+      <span class="sidebar-item__count">5</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Conf - Exp - Transp">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Conf - Exp - Transp</span>
+      <span class="sidebar-item__count">5</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Devolução">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Devolução</span>
+      <span class="sidebar-item__count">4</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Gestão CD">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Gestão CD</span>
+      <span class="sidebar-item__count">7</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Produção">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Produção</span>
+      <span class="sidebar-item__count">8</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Receb - Armaz">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Receb - Armaz</span>
+      <span class="sidebar-item__count">5</span>
+    </div><div class="sidebar-item sidebar-item--sub" data-setor="Logística" data-sub="Resumo Operacional">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Resumo Operacional</span>
+      <span class="sidebar-item__count">8</span>
+    </div></div><div class="sector sector--collapsed" data-setor="Logistica Oncoprod">
+    <span class="material-symbols-rounded sector__icon" aria-hidden="true">category</span>
+    <span class="sector__name">Logistica Oncoprod</span>
+    <span class="sector__count">0</span>
+    <span class="material-symbols-rounded sector__arrow" aria-hidden="true">expand_more</span>
+  </div>
+  <div class="sub-wrap sub-wrap--hidden" data-setor="Logistica Oncoprod">
+    <div class="sidebar-item sidebar-item--sub sector-todos" data-setor="Logistica Oncoprod">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">grid_view</span>
+      <span class="sidebar-item__name">Todos os indicadores</span>
+      <span class="sidebar-item__count">0</span>
+    </div><div class="sidebar-item sidebar-item--sub sidebar-item--empty" data-setor="Logistica Oncoprod" data-sub="Fretes">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">Fretes</span>
+      <span class="sidebar-item__count">0</span>
+    </div></div><div class="sector sector--collapsed" data-setor="DG">
+    <span class="material-symbols-rounded sector__icon" aria-hidden="true">category</span>
+    <span class="sector__name">DG</span>
+    <span class="sector__count">0</span>
+    <span class="material-symbols-rounded sector__arrow" aria-hidden="true">expand_more</span>
+  </div>
+  <div class="sub-wrap sub-wrap--hidden" data-setor="DG">
+    <div class="sidebar-item sidebar-item--sub sector-todos" data-setor="DG">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">grid_view</span>
+      <span class="sidebar-item__name">Todos os indicadores</span>
+      <span class="sidebar-item__count">0</span>
+    </div><div class="sidebar-item sidebar-item--sub sidebar-item--empty" data-setor="DG" data-sub="(preencher)">
+      <span class="material-symbols-rounded sidebar-item__icon" aria-hidden="true">subdirectory_arrow_right</span>
+      <span class="sidebar-item__name">(preencher)</span>
+      <span class="sidebar-item__count">0</span>
+    </div></div>
+      </div>
+      <div class="sidebar-legend">
+        <div class="sidebar-legend__title">LEGENDA</div>
+        <div class="sidebar-legend__row"><span class="badge badge--collaborative">C</span> Colaborativa</div>
+        <div class="sidebar-legend__row"><span class="badge badge--ai">IA</span> Relatório com Inteligência Artificial</div>
+        <div class="sidebar-legend__row"><span class="badge badge--validation">Em validação</span> Relatórios em homologação</div>
+      </div>
+    </aside>
+
+    <main class="portal-content">
+      <h1 class="content-title" id="titulo">Todos os indicadores</h1>
+      <div class="content-description" id="disp">56 relatórios disponíveis</div>
+      <section class="report-section" data-setor="Logística" data-sub="Abastecimento">
+      <h2 class="report-section__title">Abastecimento <span class="report-section__count">9</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="abastecimento máquina">
+    <h3 class="report-card__name">Abastecimento Máquina</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="abastecimento picking">
+    <h3 class="report-card__name">Abastecimento Picking</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="análise 53p">
+    <h3 class="report-card__name">Análise 53P</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="bin vs mac">
+    <h3 class="report-card__name">Bin vs Mac</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="checkout">
+    <h3 class="report-card__name">Checkout</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão de ots">
+    <h3 class="report-card__name">Gestão de OTs</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="percentual de retorno de baixa">
+    <h3 class="report-card__name">Percentual de Retorno de Baixa</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="tempo e saldo de estoque">
+    <h3 class="report-card__name">Tempo e Saldo de Estoque</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="tempo e saldo de mesa / depósito">
+    <h3 class="report-card__name">Tempo e Saldo de Mesa / Depósito</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Balanceamento">
+      <h2 class="report-section__title">Balanceamento <span class="report-section__count">4</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="balanc - est | niv | erg">
+    <h3 class="report-card__name">Balanc - EST | NIV | ERG</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="balanc - maq vs pick">
+    <h3 class="report-card__name">Balanc - Maq vs Pick</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="balanceamento estações">
+    <h3 class="report-card__name">Balanceamento Estações</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--ai" title="Inteligência Artificial">IA</span><span class="badge badge--validation">validação</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="balanceamento parâmetro">
+    <h3 class="report-card__name">Balanceamento Parâmetro</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="CEQ">
+      <h2 class="report-section__title">CEQ <span class="report-section__count">5</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="estoque contábil (mb52)">
+    <h3 class="report-card__name">Estoque Contábil (MB52)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão de validade">
+    <h3 class="report-card__name">Gestão de Validade</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="negativo">
+    <h3 class="report-card__name">Negativo</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="tempo e saldo de estoque">
+    <h3 class="report-card__name">Tempo e Saldo de Estoque</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="tempo e saldo de mesa / depósito">
+    <h3 class="report-card__name">Tempo e Saldo de Mesa / Depósito</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Conf - Exp - Transp">
+      <h2 class="report-section__title">Conf - Exp - Transp <span class="report-section__count">5</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="estudo m³">
+    <h3 class="report-card__name">Estudo M³</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão de conferência">
+    <h3 class="report-card__name">Gestão de Conferência</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão de expedição">
+    <h3 class="report-card__name">Gestão de Expedição</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão de expedição">
+    <h3 class="report-card__name">Gestão de Expedição</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--validation">validação</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="monitor de conferência">
+    <h3 class="report-card__name">Monitor de Conferência</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Devolução">
+      <h2 class="report-section__title">Devolução <span class="report-section__count">4</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="cockpit - devolução">
+    <h3 class="report-card__name">Cockpit - Devolução</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="protocolos devolução (fonte gdev)">
+    <h3 class="report-card__name">Protocolos Devolução (Fonte GDEV)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="tempo e saldo de mesa / depósito">
+    <h3 class="report-card__name">Tempo e Saldo de Mesa / Depósito</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="upm externo">
+    <h3 class="report-card__name">UPM Externo</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Gestão CD">
+      <h2 class="report-section__title">Gestão CD <span class="report-section__count">7</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="cadastros itens">
+    <h3 class="report-card__name">Cadastros Itens</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="carta de correção">
+    <h3 class="report-card__name">Carta de Correção</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="cobertura de estoque completo">
+    <h3 class="report-card__name">Cobertura de Estoque Completo</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="cobertura de estoque picking">
+    <h3 class="report-card__name">Cobertura de Estoque Picking</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="plano de produção">
+    <h3 class="report-card__name">Plano de Produção</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="s&amp;op_s&amp;oe">
+    <h3 class="report-card__name">S&amp;OP_S&amp;OE</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="separação x capacidade">
+    <h3 class="report-card__name">Separação x Capacidade</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Produção">
+      <h2 class="report-section__title">Produção <span class="report-section__count">8</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="erros sep &amp; conf homologação">
+    <h3 class="report-card__name">Erros Sep &amp; Conf Homologação</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--ai" title="Inteligência Artificial">IA</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão do a-frame">
+    <h3 class="report-card__name">Gestão do A-Frame</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="local crítico de produção">
+    <h3 class="report-card__name">Local Crítico de Produção</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--validation">piloto</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="produtividade analítico">
+    <h3 class="report-card__name">Produtividade Analítico</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="produtividade boletim">
+    <h3 class="report-card__name">Produtividade Boletim</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="recorrência de itens no a-frame">
+    <h3 class="report-card__name">Recorrência de itens no A-Frame</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="und | sep - conf">
+    <h3 class="report-card__name">Und | Sep - Conf</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="unidades por caixa (separação)">
+    <h3 class="report-card__name">Unidades por Caixa (Separação)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Receb - Armaz">
+      <h2 class="report-section__title">Receb - Armaz <span class="report-section__count">5</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="gestão de ots">
+    <h3 class="report-card__name">Gestão de OTs</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão de transferências">
+    <h3 class="report-card__name">Gestão de Transferências</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="ocupação de estoque">
+    <h3 class="report-card__name">Ocupação de Estoque</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="recebimento">
+    <h3 class="report-card__name">Recebimento</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="tempo e saldo de estoque">
+    <h3 class="report-card__name">Tempo e Saldo de Estoque</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section><section class="report-section" data-setor="Logística" data-sub="Resumo Operacional">
+      <h2 class="report-section__title">Resumo Operacional <span class="report-section__count">8</span></h2>
+      <div class="report-grid"><article class="report-card" data-nome="cancelamento">
+    <h3 class="report-card__name">Cancelamento</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · Base Colaborativa</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="cancelamento (legado)">
+    <h3 class="report-card__name">Cancelamento (Legado)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Mensal</span>
+      <span><strong>Fonte</strong> · GDEV</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="erros de separação (upm legado)">
+    <h3 class="report-card__name">Erros de Separação (UPM Legado)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Semanal</span>
+      <span><strong>Fonte</strong> · UPM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="erros de separação (upm)">
+    <h3 class="report-card__name">Erros de Separação (UPM)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="gestão produtividade">
+    <h3 class="report-card__name">Gestão Produtividade</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="radar">
+    <h3 class="report-card__name">Radar</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP ECC</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--ai" title="Inteligência Artificial">IA</span><span class="badge badge--validation">em validação</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="torre de pedidos">
+    <h3 class="report-card__name">Torre de Pedidos</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Hora a hora</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article><article class="report-card" data-nome="vendas (und - r$)">
+    <h3 class="report-card__name">Vendas (Und - R$)</h3>
+    <div class="report-card__meta">
+      <span><strong>Atualização</strong> · Diária</span>
+      <span><strong>Fonte</strong> · SAP EWM</span>
+    </div>
+    <footer class="report-card__footer">
+      <span class="badge badge--collaborative" title="Colaborativa">C</span><span class="report-card__arrow" aria-hidden="true">›</span>
+    </footer>
+  </article></div>
+    </section>
+      <div class="empty-state" id="vazio" style="display:none">Nenhum relatório para o filtro atual.</div>
+    </main>
+  </div>
+
+  <script src="portal.js"></script>
+</body>
+</html>

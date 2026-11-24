@@ -2,12 +2,8 @@
   "name": "portal-bi-logistica-web",
   "private": true,
   "scripts": {
-    "build": "node ../api/build_menu.js",
     "format": "prettier --write \"../api/**/*.js\" \"**/*.{js,css,json,html,md}\" \"../README.md\" \"../package.json\" --config .prettierrc.json --ignore-path .prettierignore",
     "format:check": "prettier --check \"../api/**/*.js\" \"**/*.{js,css,json,html,md}\" \"../README.md\" \"../package.json\" --config .prettierrc.json --ignore-path .prettierignore"
-  },
-  "dependencies": {
-    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "prettier": "^3.6.2"
