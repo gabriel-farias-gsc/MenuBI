@@ -9,7 +9,7 @@
   let scope = {
     type: 'sector',
     sector: document.querySelector('.sector-todos')?.dataset.setor || '',
-    label: document.querySelector('.sector-todos')?.dataset.setor || ''
+    label: document.querySelector('.sector-todos')?.dataset.setor || '',
   };
 
   function markActive(element) {
@@ -24,9 +24,12 @@
     let visibleCount = 0;
 
     sections.forEach((section) => {
-      const matchesScope = scope.type === 'all'
-        || (scope.type === 'sector' && section.dataset.setor === scope.sector)
-        || (scope.type === 'sub' && section.dataset.setor === scope.sector && section.dataset.sub === scope.sub);
+      const matchesScope =
+        scope.type === 'all' ||
+        (scope.type === 'sector' && section.dataset.setor === scope.sector) ||
+        (scope.type === 'sub' &&
+          section.dataset.setor === scope.sector &&
+          section.dataset.sub === scope.sub);
 
       let sectionVisibleCount = 0;
       section.querySelectorAll('.report-card').forEach((card) => {
@@ -51,7 +54,9 @@
 
   document.querySelectorAll('.sector').forEach((header) => {
     header.addEventListener('click', () => {
-      const wrap = document.querySelector(`.sub-wrap[data-setor="${CSS.escape(header.dataset.setor)}"]`);
+      const wrap = document.querySelector(
+        `.sub-wrap[data-setor="${CSS.escape(header.dataset.setor)}"]`
+      );
       header.classList.toggle('sector--collapsed');
       if (wrap) wrap.classList.toggle('sub-wrap--hidden');
     });
@@ -71,7 +76,7 @@
         type: 'sub',
         sector: item.dataset.setor,
         sub: item.dataset.sub,
-        label: `${item.dataset.setor} · ${item.dataset.sub}`
+        label: `${item.dataset.setor} · ${item.dataset.sub}`,
       };
       markActive(event.currentTarget);
       filterReports();
@@ -92,14 +97,17 @@
       drawerToggle.type = 'button';
       drawerToggle.setAttribute('aria-label', 'Expandir navegação');
       drawerToggle.setAttribute('aria-expanded', 'false');
-      drawerToggle.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">menu</span>';
+      drawerToggle.innerHTML =
+        '<span class="material-symbols-rounded" aria-hidden="true">menu</span>';
       sidebar.prepend(drawerToggle);
     }
 
     document.querySelectorAll('.sidebar-item__number').forEach((number) => {
       const item = number.closest('.sidebar-item');
       number.className = 'material-symbols-rounded sidebar-item__icon';
-      number.textContent = item?.classList.contains('sector-todos') ? 'grid_view' : 'subdirectory_arrow_right';
+      number.textContent = item?.classList.contains('sector-todos')
+        ? 'grid_view'
+        : 'subdirectory_arrow_right';
       number.setAttribute('aria-hidden', 'true');
     });
 
@@ -123,7 +131,10 @@
     drawerToggle.addEventListener('click', () => {
       const collapsed = sidebar.classList.toggle('portal-sidebar--collapsed');
       drawerToggle.setAttribute('aria-expanded', String(!collapsed));
-      drawerToggle.setAttribute('aria-label', collapsed ? 'Expandir navegação' : 'Recolher navegação');
+      drawerToggle.setAttribute(
+        'aria-label',
+        collapsed ? 'Expandir navegação' : 'Recolher navegação'
+      );
 
       const icon = drawerToggle.querySelector('.material-symbols-rounded');
       if (icon) icon.textContent = collapsed ? 'menu' : 'menu_open';
@@ -131,4 +142,125 @@
   }
 
   filterReports();
+
+  const agentButton = document.querySelector('.btn-agent');
+  const body = document.body;
+
+  if (!agentButton) return;
+
+  let tooltip;
+
+  agentButton?.addEventListener('mouseenter', () => {
+    if (tooltip) return;
+
+    tooltip = document.createElement('div');
+    tooltip.className = 'agent-tooltip';
+    tooltip.textContent = 'Em que posso ajudar?';
+
+    document.body.appendChild(tooltip);
+
+    const rect = agentButton.getBoundingClientRect();
+
+    tooltip.style.left = `${rect.left + rect.width / 2}px`;
+
+    tooltip.style.top = `${rect.top - 12}px`;
+
+    requestAnimationFrame(() => {
+      tooltip.classList.add('agent-tooltip--visible');
+    });
+  });
+
+  agentButton?.addEventListener('mouseleave', () => {
+    if (!tooltip) return;
+
+    tooltip.classList.remove('agent-tooltip--visible');
+
+    const current = tooltip;
+    tooltip = null;
+
+    setTimeout(() => current.remove(), 200);
+  });
+
+  agentButton.addEventListener('click', () => {
+    // já existe? não cria outro
+    let modal = document.querySelector('.agent-modal');
+
+    if (modal) {
+      return;
+    }
+
+    body.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="agent-modal">
+        <div class="agent-modal__content">
+
+         <div class="chat-container">
+
+    <header class="chat-header">
+        <div class="header-left">
+
+           
+          <img src="/assets/agent-logo.png" width="38" height="38" class="logo" />
+
+            <div class="title-group">
+                <h1>Agente Master</h1>
+                <span>Conectado</span>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="action-btn" id="agent-modal-minimize">−</button>
+            <button class="action-btn" id="agent-modal-close">×</button>
+        </div>
+    </header>
+
+    <main class="chat-body">
+
+        <div class="bot-message">
+            Olá! Sou o Agente Master, como posso ajudá-lo hoje?
+        </div>
+
+    </main>
+
+    <footer class="chat-footer">
+
+
+        <div class="input-wrapper">
+        
+        <button class="attach-btn">
+           +
+        </button>
+            <input
+                type="text"
+                placeholder="Digite sua mensagem..."
+            >
+             <button class="send-btn">
+              <span class="material-symbols-outlined">
+arrow_upward
+</span>
+             </button>
+        </div>
+
+       
+
+    </footer>
+
+</div>
+
+        </div>
+      </div>
+      `
+    );
+
+    agentButton.style.display = 'none';
+
+    // pega o modal recém criado
+    modal = document.querySelector('.agent-modal');
+
+    modal.querySelector('#agent-modal-close').addEventListener('click', () => {
+      modal.remove();
+      agentButton.style.display = 'flex';
+    });
+  });
 })();

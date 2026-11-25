@@ -1,39 +1,39 @@
 :root {
   /* Marcas */
-  --brand-farmas-navy: #1C2445;
-  --brand-farmas-red: #B82824;
-  --brand-farmas-blue: #008ECF;
-  --brand-farmas-blue-dark: #0078B7;
-  --brand-farmas-yellow: #F0F73C;
+  --brand-farmas-navy: #1c2445;
+  --brand-farmas-red: #b82824;
+  --brand-farmas-blue: #008ecf;
+  --brand-farmas-blue-dark: #0078b7;
+  --brand-farmas-yellow: #f0f73c;
   --brand-farmas-brown: #703622;
-  --brand-oncoprod-sand: #E5C89E;
-  --brand-oncoprod-caramel: #A68E6E;
-  --brand-oncoprod-petroleum: #355B73;
-  
+  --brand-oncoprod-sand: #e5c89e;
+  --brand-oncoprod-caramel: #a68e6e;
+  --brand-oncoprod-petroleum: #355b73;
+
   /* Cores semânticas */
   --color-brand-primary: var(--brand-farmas-navy);
   --color-brand-accent: var(--brand-farmas-navy);
   --color-brand-danger: var(--brand-farmas-red);
   --color-text-primary: #151922;
-  --color-text-secondary: #B1B1B1;
-  --color-border-default: #ECECEC;
-  --color-divider: #B1B1B1;
-  --color-border-strong: #D9D9D9;
-  --color-background-page: #F7F8FA;
-  --color-background-card: #FFFFFF;
-  --color-background-subtle: #F5F5F5;
+  --color-text-secondary: #b1b1b1;
+  --color-border-default: #ececec;
+  --color-divider: #b1b1b1;
+  --color-border-strong: #d9d9d9;
+  --color-background-page: #f7f8fa;
+  --color-background-card: #ffffff;
+  --color-background-subtle: #f5f5f5;
 
   /* Status */
-  --status-positive-text: #5E9C76;
-  --status-positive-background: #E3F4E8;
-  --status-negative-text: #C8706B;
-  --status-negative-background: #FBE4E2;
-  --status-warning-text: #C49A3A;
-  --status-warning-background: #FDF3D8;
-  --status-neutral-text: #8C8C8C;
-  --status-neutral-background: #F2F2F2;
-  --status-info-text: #5C93BF;
-  --status-info-background: #E1EEF8;
+  --status-positive-text: #5e9c76;
+  --status-positive-background: #e3f4e8;
+  --status-negative-text: #c8706b;
+  --status-negative-background: #fbe4e2;
+  --status-warning-text: #c49a3a;
+  --status-warning-background: #fdf3d8;
+  --status-neutral-text: #8c8c8c;
+  --status-neutral-background: #f2f2f2;
+  --status-info-text: #5c93bf;
+  --status-info-background: #e1eef8;
 
   /* Tipografia */
   --font-family-brand: "Chivo", "Segoe UI", system-ui, sans-serif;
@@ -68,7 +68,7 @@
   --border-width-default: 1px;
 
   /* Sombras */
-  --shadow-header: 0 6px 14px #E2E2E2;
+  --shadow-header: 0 6px 14px #e2e2e2;
   --shadow-card-hover: 0 6px 14px rgba(28, 36, 69, 0.08);
 
   /* Dimensões */
@@ -76,7 +76,7 @@
   --header-margin-top: 12px;
   --header-horizontal-margin: 12px;
   --sidebar-width: 244px;
-  --logo-width: 160px;
+  --logo-width: 140px;
   --logo-height: 40px;
   --search-width: 224px;
   --drawer-width-collapsed: 64px;
