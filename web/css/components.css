@@ -530,16 +530,6 @@
     0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.chat-container {
-  width: 820px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #f3f3f4;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
 /* HEADER */
 .chat-header {
   height: 62px;
@@ -593,12 +583,26 @@
   border-radius: 50%;
   background: #f4f0ee;
   color: var(--color-text-primary);
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.webchat__text-content {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  border-radius: 8px !important;
+}
+
+.webchat__bubble__content {
+  color: var(--color-text-primary) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  border-radius: 8px !important;
 }
 
 /* BODY */
@@ -673,6 +677,7 @@
   font-weight: 400;
   cursor: pointer;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .send-btn span {
@@ -701,4 +706,431 @@
 
 .portal-content {
   display: block;
+}
+
+/* ===========================
+   MODAL AGENTE
+=========================== */
+
+.agent-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 99999;
+}
+
+.agent-modal__content {
+  width: 820px;
+  height: 90vh;
+  max-height: 850px;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.18),
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.chat-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #f3f3f4;
+
+  overflow: hidden;
+}
+
+/* ===========================
+   HEADER FIXO
+=========================== */
+
+.chat-header {
+  flex: 0 0 62px;
+
+  height: 62px;
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  background: linear-gradient(90deg, #cfe6f3 0%, #c6e8da 22%, #f0e9cf 45%, #f9e4dc 65%, #f8dee5 82%, #e6dcf2 100%);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  z-index: 2;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+}
+
+.title-group h1 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: #1f1f1f;
+}
+
+.title-group span {
+  font-size: 12px;
+  color: #666;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f4f0ee;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.action-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===========================
+   WEBCHAT
+=========================== */
+
+#webchat {
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #f3f3f4;
+}
+
+/* transcript */
+
+.webchat__stacked-layout {
+  height: 100% !important;
+}
+
+.webchat__stacked-layout__content {
+  overflow-y: auto !important;
+}
+
+/* scroll apenas das mensagens */
+
+.webchat__basic-transcript {
+  overflow-y: auto !important;
+}
+
+.webchat__basic-transcript__scrollable {
+  overflow-y: auto !important;
+}
+
+/* ===========================
+   BOLHAS
+=========================== */
+
+.webchat__bubble {
+  border-radius: 8px !important;
+}
+
+.webchat__bubble__content {
+  border-radius: 8px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.5 !important;
+}
+
+.webchat__suggested-action {
+  border: none !important;
+
+  border-radius: 8px !important;
+
+  background-color: #fff !important;
+
+  font-weight: 500;
+
+  padding: 8px !important;
+
+  color: var(--brand-farmas-blue-dark) !important;
+
+  font-size: 12px !important;
+}
+
+/* ===========================
+   FOOTER FIXO
+=========================== */
+
+.webchat__upload__button {
+  margin-right: -15px;
+  margin-left: -4px;
+}
+
+.webchat__send-box-text-box {
+  min-height: 48px !important;
+
+  border-radius: 22px !important;
+
+  background: white !important;
+
+  box-shadow: none !important;
+}
+
+.webchat__send-button {
+  width: 40px !important;
+
+  height: 40px !important;
+
+  border-radius: 50% !important;
+}
+
+.webchat__send-button:hover {
+  transform: scale(1.05);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 900px) {
+  .agent-modal__content {
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+  }
+}
+
+/* =============================
+   SEND BOX MODERNO
+============================= */
+
+.webchat__send-box {
+  background: #f5f5f5 !important;
+  padding: 12px !important;
+  border-top: 1px solid #d8d8d8 !important;
+}
+
+/* wrapper principal */
+
+.webchat__send-box__main {
+  display: flex !important;
+  align-items: center !important;
+
+  flex-shrink: 0 !important;
+
+  background: #f5f5f5 !important;
+
+  padding: 12px !important;
+  border-top: none !important;
+
+  width: 100%;
+
+  gap: 8px;
+
+  height: 52px !important;
+  min-height: 52px !important;
+
+  padding: 0px 10px !important;
+
+  border-radius: 30px !important;
+
+  background: #ffffff !important;
+
+  border: 1px solid #cfcfcf !important;
+
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.04),
+    0 4px 10px rgba(0, 0, 0, 0.03);
+
+  box-sizing: border-box;
+}
+
+/* =============================
+   BOTÃO ANEXAR
+============================= */
+
+.webchat__upload-button {
+  flex: 0 0 auto !important;
+
+  width: 42px !important;
+  height: 42px !important;
+  margin-right: -12px;
+}
+
+.webchat__upload-button button {
+  width: 42px !important;
+  height: 42px !important;
+
+  border-radius: 50% !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  cursor: pointer;
+}
+
+.webchat__upload-button button::before {
+  content: "+";
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 34px;
+  font-weight: 300;
+
+  color: #2e3035;
+}
+
+.webchat__attachment-icon svg {
+  display: none;
+}
+
+/* =============================
+   INPUT
+============================= */
+
+.webchat__send-box__text-box {
+  flex: 1 !important;
+}
+
+.webchat__send-box-text-box {
+  flex: 1 !important;
+
+  min-height: 48px !important;
+
+  border: none !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  padding: 0 !important;
+}
+
+.webchat__send-box-text-box__input {
+  height: 48px !important;
+
+  border: none !important;
+
+  outline: none !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  font-size: 14px !important;
+
+  color: var(--color-text-primary) !important;
+
+  padding: 0 10px !important;
+}
+
+.webchat__send-box-text-box__input::placeholder {
+  color: #7c7c7c !important;
+  font-size: 14px !important;
+}
+
+/* =============================
+   BOTÃO ENVIAR
+============================= */
+
+.webchat__send-button {
+  flex: 0 0 auto !important;
+
+  width: 32px !important;
+  height: 32px !important;
+
+  min-width: 32px !important;
+
+  border-radius: 50% !important;
+  margin-top: 8px;
+  background: #e8e8e8 !important;
+  transform: scale(1.05);
+  transition: all 0.2s ease !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.webchat__send-button::before {
+  content: "arrow_upward";
+
+  font-family: "Material Symbols Rounded";
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  color: #2e3035;
+}
+
+.webchat__send-icon {
+  width: 20px !important;
+  height: 20px !important;
+  display: none;
+  fill: #2e3035 !important;
+}
+
+/* remove efeitos internos */
+
+.webchat__icon-button__shade {
+  display: none !important;
+}
+
+/* estado focus */
+
+.webchat__send-box__main:focus-within {
+  border-color: #7fa6cc !important;
+
+  box-shadow: 0 0 0 3px rgba(127, 166, 204, 0.15);
 }

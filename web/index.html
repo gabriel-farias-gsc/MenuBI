@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
         </svg>
         <input id="busca" type="search" placeholder="Buscar relatório…" autocomplete="off">
       </label>
-      <div class="btn-agent"><img src="../assets/agent-logo.png" width="20" height="20" />
+      <div class="btn-agent" id="openAgent"><img src="../assets/agent-logo.png" width="20" height="20" />
         Agente Master
       </div>
       <img class="header-logo"
@@ -782,7 +783,45 @@
     </div>
   </main>
 
+  <div id="agent-modal" class="agent-modal" style="display:none">
+    <div class="agent-modal__content">
+
+      <div class="chat-container">
+
+        <div class="chat-header">
+
+          <div class="header-left">
+            <img class="logo" src="../assets/agent-logo.png" alt="Agent" />
+
+            <div class="title-group">
+              <h1>Agente Master</h1>
+              <span>Portal BI Logística</span>
+            </div>
+          </div>
+
+          <div class="header-actions">
+
+            <button class="action-btn" id="restartChat">
+              ↻
+            </button>
+
+            <button class="action-btn" id="closeChat">
+              ✕
+            </button>
+
+          </div>
+
+        </div>
+
+        <div id="webchat"></div>
+
+      </div>
+
+    </div>
+  </div>
+
   <script src="portal.js"></script>
+  <script src="chat.js"></script>
 </body>
 
 </html>
