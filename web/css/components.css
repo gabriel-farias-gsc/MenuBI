@@ -2,7 +2,6 @@
 .header-title {
   display: flex;
   flex-direction: column;
-  order: 1;
 }
 
 .header-title__main {
@@ -13,7 +12,8 @@
 }
 
 .header-title__subtitle {
-  display: none;
+  color: var(--color-text-secondary);
+  font-size: 12px;
 }
 
 .header-logo {
@@ -449,12 +449,14 @@
 }
 
 .btn-agent {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
+  margin-left: auto;
+  position: relative;
+  width: 130px;
+  font-size: 12px;
+  gap: 8px;
   height: 40px;
-  border-radius: 50%;
+  font-weight: 500;
+  border-radius: 20px;
   background-color: #ffffff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -463,75 +465,48 @@
   cursor: pointer;
   animation:
     "controle-hc-borda",
-    2s linear infinite;
+    3s linear infinite;
 }
 
 .btn-agent::before {
   content: "";
   position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-  background: conic-gradient(#1e4a75, #0c2440, #7fa6cc, #0c2440, #7fa6cc, #1e4a75);
-  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
-  animation: controle-hc-borda 4s linear infinite;
-}
+  inset: -1px;
+  border-radius: inherit;
 
-@keyframes controle-hc-borda {
-  to {
-    transform: rotate(360deg);
-  }
-}
+  padding: 2px;
 
-.agent-tooltip {
-  position: fixed;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    #1e4a75 45%,
+    #7fa6cc 50%,
+    #f0813c 55%,
+    transparent 65%,
+    transparent 100%
+  );
 
-  background: #0c2440;
-  color: #fff;
-  transform: translate(-125%, 14px);
-  padding: 8px 12px;
-  border-radius: 8px;
+  background-size: 300% 100%;
+  animation: border-wave 3s linear infinite;
 
-  font-size: 12px;
-  font-weight: 500;
-
-  white-space: nowrap;
-
-  opacity: 0;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 
   pointer-events: none;
-  z-index: 99999;
-
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.agent-tooltip--visible {
-  opacity: 1;
-}
+@keyframes border-wave {
+  from {
+    background-position: 200% 0;
+  }
 
-/* setinha apontando para o botão */
-.agent-tooltip::after {
-  content: "";
-
-  position: absolute;
-
-  right: -5px;
-  top: 50%;
-
-  width: 10px;
-  height: 10px;
-
-  background: #0c2440;
-
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.agent-tooltip--visible {
-  opacity: 1;
-  transform: translate(-125%, 14px);
+  to {
+    background-position: -200% 0;
+  }
 }
 
 .agent-modal {

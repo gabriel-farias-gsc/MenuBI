@@ -148,39 +148,6 @@
 
   if (!agentButton) return;
 
-  let tooltip;
-
-  agentButton?.addEventListener('mouseenter', () => {
-    if (tooltip) return;
-
-    tooltip = document.createElement('div');
-    tooltip.className = 'agent-tooltip';
-    tooltip.textContent = 'Em que posso ajudar?';
-
-    document.body.appendChild(tooltip);
-
-    const rect = agentButton.getBoundingClientRect();
-
-    tooltip.style.left = `${rect.left + rect.width / 2}px`;
-
-    tooltip.style.top = `${rect.top - 12}px`;
-
-    requestAnimationFrame(() => {
-      tooltip.classList.add('agent-tooltip--visible');
-    });
-  });
-
-  agentButton?.addEventListener('mouseleave', () => {
-    if (!tooltip) return;
-
-    tooltip.classList.remove('agent-tooltip--visible');
-
-    const current = tooltip;
-    tooltip = null;
-
-    setTimeout(() => current.remove(), 200);
-  });
-
   agentButton.addEventListener('click', () => {
     // já existe? não cria outro
     let modal = document.querySelector('.agent-modal');
@@ -252,8 +219,6 @@ arrow_upward
       </div>
       `
     );
-
-    agentButton.style.display = 'none';
 
     // pega o modal recém criado
     modal = document.querySelector('.agent-modal');
